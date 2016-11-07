@@ -1,0 +1,7 @@
+<p>Your word : <%= params[:attempt] %></p>
+<p>Time to answer: <%= @result[:time] %> s</p>
+<p>Translation: <%= @result[:translation] %></p>
+<p>Your score: <%= @result[:score] %></p>
+<p>Message: <%= @result[:message] %></p>
+
+<%= link_to 'Play Again', '/game' %>
