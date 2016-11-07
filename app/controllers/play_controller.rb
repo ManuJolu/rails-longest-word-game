@@ -1,20 +1,25 @@
 class PlayController < ApplicationController
   def game
-    @new_grid = generate_grid(9).join(" ")
+    @grid = generate_grid(9).join(" ")
     @start_time = Time.now
+    #  TODO:  store grid and start time
+    # session[:grid] = @new_grid.join
+    # session[:start_time] = @start_time
   end
+
+  def score
+    @end_time = Time.now
+    @start_time = Time.parse(params[:start_time]) # Time.parse(session[:start_time])
+    @new_grid = params[:grid].split(" ")
+    @result = run_game(params[:attempt], @grid, @start_time, @end_time) # session[:grid]
+  end
+
+  private
 
   def generate_grid(grid_size)
     Array.new(grid_size) do
       rand < 0.2 ? ['A','E','I','O','U','Y'][rand(6)] : ('A'..'Z').to_a[rand(26)]
     end
-  end
-
-  def score
-    @end_time = Time.now
-    @start_time = Time.parse(params[:start])
-    @new_grid = params[:grid].split(" ")
-    @result = run_game(params[:attempt], @new_grid, @start_time, @end_time)
   end
 
   def included?(guess, grid)

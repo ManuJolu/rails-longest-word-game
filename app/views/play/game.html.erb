@@ -1,12 +1,12 @@
 
-<p>Here is your new grid: <%= @new_grid %> </p>
+<p>Here is your new grid: <%= @grid %> </p>
 
 <p>What's your best shot ?</p>
 <form action="/score" method="get">
   <label for="shot">Your shot: </label>
   <input type="text" name="attempt" id="shot" placeholder="FLAT">
-  <input type="hidden" name="grid" value="<%= @new_grid %>">
-  <input type="hidden" name="start" value= "<%= @start_time %>">
+  <input type="hidden" name="grid" value="<%= @grid %>">
+  <input type="hidden" name="start_time" value= "<%= @start_time %>">
   <p>Press enter</p>
 </form>
 
